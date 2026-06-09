@@ -1,5 +1,4 @@
 #include "push_swap.h"
-#include <stdio.h>
 
 void	stack_printer(t_node *head)
 {
@@ -11,24 +10,30 @@ void	stack_printer(t_node *head)
 		printf("[%d], ", current->value);
 		if ((current->previous) != NULL)
 		{
-			printf("previous is: [%d], ", current->previous->value);
+			ft_printf("previous is: [%d], ", current->previous->value);
 		}
 		else
 		{
-			printf("(Previous = NULL), ");
+			ft_printf("(Previous = NULL), ");
 		}
 		current = current->next;
 	}
-	printf("-> NULL\n");
+	ft_printf("-> NULL\n");
 }
 
-int	main(void)
+int	main(int argc, char **argv)
 {
 	t_node *stack_a;
 	t_node *stack_b;
 
 	stack_a = NULL;
 	stack_b = NULL;
+	if (argc < 2)
+		return (0);
+	if (!check_arguments(argc, argv))
+		error_exit;
+	init_stack_a(&stack_a, argc, argv);
+
 
 	stack_a = node_builder(2);
 	stack_a->next = node_builder(5);
