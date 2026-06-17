@@ -6,7 +6,7 @@
 /*   By: pgois-wa <pgois-wa@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/03 16:15:36 by pgois-wa          #+#    #+#             */
-/*   Updated: 2026/06/13 06:59:02 by aantela-         ###   ########.fr       */
+/*   Updated: 2026/06/17 05:19:56 by aantela-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,24 +31,30 @@ static void	swap(t_stack *s)
 	first->previous = second;
 	s->top = second;
 }
-
-void	sa(t_stack *a)
+//temporariamente modificado para impressao de debug.
+void	sa(t_stack *a, t_stack *b, t_bench *bench)
 {
 	if (!a || !a->top || !a->top->next)
 		return ;
 	swap(a);
 	write(1, "sa\n", 3);
+	print_stacks("sa", a, b); //debug
+	if (bench)
+		bench -> sa++;
 }
-
-void	sb(t_stack *b)
+//temporariamente modificador para impressar de debug.
+void	sb(t_stack *b, t_stack *a, t_bench *bench)
 {
 	if (!b || !b->top || !b->top->next)
 		return ;
 	swap(b);
 	write(1, "sb\n", 3);
+	print_stacks("sb", a, b);//debug
+	if (bench)
+		bench -> sb++;
 }
 
-void	ss(t_stack *a, t_stack *b)
+void	ss(t_stack *a, t_stack *b, t_bench *bench)
 {
 	int	swapped_a;
 	int	swapped_b;
@@ -66,9 +72,22 @@ void	ss(t_stack *a, t_stack *b)
 		swapped_b = 1;
 	}
 	if (swapped_a && swapped_b)
+	{
 		write(1, "ss\n", 3);
+		print_stacks("ss",a ,b); //debugg
+		if (bench)
+			bench -> ss++;
+	}
 	else if (swapped_a)
+	{
 		write(1, "sa\n", 3);
+		if	(bench)
+			bench -> sa++;
+	}
 	else if (swapped_b)
+	{
 		write(1, "sb\n", 3);
+		if (bench)
+			bench -> sb++;
+	}
 }

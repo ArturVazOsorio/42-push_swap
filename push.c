@@ -6,7 +6,7 @@
 /*   By: pgois-wa <pgois-wa@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/03 20:03:11 by pgois-wa          #+#    #+#             */
-/*   Updated: 2026/06/13 06:50:17 by aantela-         ###   ########.fr       */
+/*   Updated: 2026/06/17 05:15:07 by aantela-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,14 +35,20 @@ static void	push(t_stack *src, t_stack *dst)
 	dst->size++;
 }
 
-void	pa(t_stack *a, t_stack *b)
+void	pa(t_stack *a, t_stack *b, t_bench *bench)
 {
 	push(b, a);
 	write(1, "pa\n", 3);
+	print_stacks("pa", a, b);
+	if (bench)
+		bench -> pa++;
 }
 
-void	pb(t_stack *a, t_stack *b)
+void	pb(t_stack *a, t_stack *b, t_bench *bench)
 {
 	push(a, b);
 	write(1, "pb\n", 3);
+	print_stacks("pb", a, b);
+	if (bench)
+		bench -> pb++;
 }

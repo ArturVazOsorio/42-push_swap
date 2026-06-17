@@ -6,20 +6,24 @@
 #    By: aantela- <aantela-@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/06/14 14:51:25 by aantela-          #+#    #+#              #
-#    Updated: 2026/06/14 14:56:34 by aantela-         ###   ########.fr        #
+#    Updated: 2026/06/17 05:43:30 by aantela-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= push_swap
 
 CC		= cc
-CFLAGS	= -Wall -Wextra -Werror
+CFLAGS	= -Wall -Wextra -Werror -march=native
+ 
 
 SRCS	= main_t.c \
+		  debug.c \
 		  erro_handler.c \
 		  parse_args.c \
 		  push_swap_utils.c \
+		  bench.c \
 		  utils.c \
+		  utils_1.c	\
 		  push.c \
 		  swap.c \
 		  rotate.c \

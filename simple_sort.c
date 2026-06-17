@@ -6,7 +6,7 @@
 /*   By: aantela- <aantela-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/14 14:50:12 by aantela-          #+#    #+#             */
-/*   Updated: 2026/06/14 14:50:16 by aantela-         ###   ########.fr       */
+/*   Updated: 2026/06/17 05:12:48 by aantela-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static int	get_min_index(t_stack *a)
 	return (min_index);
 }
 
-static void	rotate_to_top(t_stack *a, int min_index)
+static void	rotate_to_top(t_stack *a, t_stack *b, int min_index, t_bench *bench)
 {
 	int	distance;
 
@@ -46,41 +46,51 @@ static void	rotate_to_top(t_stack *a, int min_index)
 		distance = min_index - a->size;
 	while (distance > 0)
 	{
-		ra(a);
+		ra(a, b, bench);
 		distance--;
 	}
 	while (distance < 0)
 	{
-		rra(a);
+		rra(a, b, bench);
 		distance++;
 	}
 }
 
-static void	sort_three(t_stack *a)
+static void	sort_three(t_stack *a, t_stack *b, t_bench *bench)
 {
 	int	top;
 	int	mid;
 	int	bot;
-
+	
+	if (a->size < 2)
+        return ;
+    if (a->size == 2)
+    {
+        if (a->top->value > a->top->next->value)
+            sa(a, b, bench);
+        return ;
+	}
 	top = a->top->value;
 	mid = a->top->next->value;
 	bot = a->top->next->next->value;
 	if (top > mid && top > bot)
-		ra(a);
+		ra(a, b, bench);
 	else if (bot < top && bot < mid)
-		rra(a);
+		rra(a, b, bench);
 	if (a->top->value > a->top->next->value)
-		sa(a);
+		sa(a, b, bench);
 }
 
-void	sort_simple(t_stack *a, t_stack *b)
+void	sort_simple(t_stack *a, t_stack *b, t_bench *bench)
 {
 	while (a->size > 3)
 	{
-		rotate_to_top(a, get_min_index(a));
-		pb(a, b);
+		rotate_to_top(a, b, get_min_index(a), bench);
+		if (is_sorted(a))
+			return ;
+		pb(a, b, bench);
 	}
-	sort_three(a);
+	sort_three(a, b, bench);
 	while (b->top)
-		pa(a, b);
+		pa(a, b, bench);
 }

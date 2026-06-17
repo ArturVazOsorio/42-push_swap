@@ -6,7 +6,7 @@
 /*   By: aantela- <aantela-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/05 15:11:45 by pgois-wa          #+#    #+#             */
-/*   Updated: 2026/06/14 14:52:27 by aantela-         ###   ########.fr       */
+/*   Updated: 2026/06/17 05:45:09 by aantela-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,11 +40,28 @@ typedef enum e_strategy
 	STRAT_COMPLEX
 }	t_strategy;
 
+typedef struct	s_bench
+{
+	int	sa;
+	int	sb;
+	int	ss;
+	int	pa;
+	int	pb;
+	int ra;
+	int rb;
+	int	rr;
+	int	rra;
+	int	rrb;
+	int	rrr;
+}		t_bench;
+
 typedef struct s_config
 {
 	t_strategy	strategy;
 	int			bench_mode;
 }				t_config;
+// DEGUG TOOLS
+void	print_stacks(const char *op, t_stack *a, t_stack *b);
 
 //ERRO_HANDLER.C
 void	handle_error_and_exit(t_stack *stack);
@@ -68,23 +85,27 @@ char	**ft_split(char const *s);
 void	free_array(char **array);
 
 // operadores
-void	sa(t_stack *a);
-void	sb(t_stack *b);
-void	ss(t_stack *a, t_stack *b);
+// adicionado a sa e sb stack temporarias para debug.
+void	sa(t_stack *a, t_stack *b, t_bench *bench);
+void	sb(t_stack *b, t_stack *a, t_bench *bench);
+void	ss(t_stack *a, t_stack *b, t_bench *bench);
+//adicionado a ra e rb stack temporarias para debug.
+void    ra(t_stack *a, t_stack *b, t_bench *bench);
+void    rb(t_stack *b, t_stack *a, t_bench *bench);
+void    rr(t_stack *a, t_stack *b, t_bench *bench);
+//adicioonado a rra rrb stack temporarias para debug.
+void	rra(t_stack *a, t_stack *b, t_bench *bench);
+void	rrb(t_stack *b, t_stack *a, t_bench *bench);
+void	rrr(t_stack *a, t_stack *b, t_bench *bench);
 
-void    ra(t_stack *a);
-void    rb(t_stack *b);
-void    rr(t_stack *a, t_stack *b);
 
-void	rra(t_stack *a);
-void	rrb(t_stack *b);
-void	rrr(t_stack *a, t_stack *b);
-
-
-void	pa(t_stack *a, t_stack *b);
-void	pb(t_stack *a, t_stack *b);
+void	pa(t_stack *a, t_stack *b, t_bench *bench);
+void	pb(t_stack *a, t_stack *b, t_bench *bench);
 
 // simple sort teste
-void	sort_simple(t_stack *a, t_stack *b);
+void	sort_simple(t_stack *a, t_stack *b, t_bench *bench);
 
+// BENCH
+double	compute_disorder(t_stack *a);
+void	print_bench(t_bench *bench, t_config *config, double disorder);
 #endif

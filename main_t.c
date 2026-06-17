@@ -6,7 +6,7 @@
 /*   By: aantela- <aantela-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/14 14:56:24 by aantela-          #+#    #+#             */
-/*   Updated: 2026/06/14 14:56:27 by aantela-         ###   ########.fr       */
+/*   Updated: 2026/06/17 05:46:39 by aantela-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,17 @@
 int	main(int argc, char **argv)
 {
 	t_config	config;
+	t_bench		bench;
 	t_stack		stack_a;
 	t_stack		stack_b;
 	int			start_index;
 	char		**split_args;
 	int			split_count;
+	double		disorder;
 
 	if (argc < 2)
 		return (0);
+	bench = (t_bench) {0};
 	start_index = parse_flags(argc, argv, &config);
 	if (start_index == argc)
 		return (0);
@@ -78,8 +81,11 @@ int	main(int argc, char **argv)
 		free_stack(&stack_a);
 		return (0);
 	}
+	disorder = compute_disorder(&stack_a);
 	if (config.strategy == STRAT_SIMPLE)
-		sort_simple(&stack_a, &stack_b);
+		sort_simple(&stack_a, &stack_b, &bench);
+	if (config.bench_mode)
+    print_bench(&bench, &config, disorder);
 	free_stack(&stack_a);
 	free_stack(&stack_b);
 	return (0);

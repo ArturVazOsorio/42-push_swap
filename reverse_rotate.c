@@ -6,7 +6,7 @@
 /*   By: pgois-wa <pgois-wa@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/07 19:08:39 by pgois-wa          #+#    #+#             */
-/*   Updated: 2026/06/13 07:01:20 by aantela-         ###   ########.fr       */
+/*   Updated: 2026/06/17 05:28:43 by aantela-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,23 +58,29 @@ static void	reverse_rotate(t_stack *s)
 	s->top->previous = last;
 	s->top = last;
 }
-void	rra(t_stack *a)
+void	rra(t_stack *a, t_stack *b, t_bench *bench)
 {
 	if (!a || !a->top || !a->top->next)
 		return ;
 	reverse_rotate(a);
 	write(1, "rra\n", 4);
+	print_stacks("rra", a, b);
+	if (bench)
+		bench -> rra++;
 }
 
-void	rrb(t_stack *b)
+void	rrb(t_stack *b, t_stack *a, t_bench *bench)
 {
 	if (!b || !b->top || !b->top->next)
 		return ;
 	reverse_rotate(b);
 	write(1, "rrb\n", 4);
+	print_stacks("rrb", a, b);
+	if (bench)
+		bench -> rrb++;
 }
 
-void	rrr(t_stack *a, t_stack *b)
+void	rrr(t_stack *a, t_stack *b, t_bench *bench)
 {
 	int	rotated_a;
 	int	rotated_b;
@@ -92,9 +98,22 @@ void	rrr(t_stack *a, t_stack *b)
 		rotated_b = 1;
 	}
 	if (rotated_a && rotated_b)
+	{
 		write(1, "rrr\n", 4);
+		print_stacks("rrr", a, b);
+		if (bench)
+			bench -> rrr++;
+	}
 	else if (rotated_a)
+	{
 		write(1, "rra\n", 4);
+		if (bench)
+			bench -> rra++;
+	}
 	else if (rotated_b)
+	{
 		write(1, "rrb\n", 4);
+		if (bench)
+			bench -> rrb++;
+	}
 }

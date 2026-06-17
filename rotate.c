@@ -6,7 +6,7 @@
 /*   By: pgois-wa <pgois-wa@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/06 01:06:03 by pgois-wa          #+#    #+#             */
-/*   Updated: 2026/06/13 07:00:42 by aantela-         ###   ########.fr       */
+/*   Updated: 2026/06/17 05:24:31 by aantela-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,23 +60,29 @@ static void	rotate(t_stack *s)
 	s->bottom->next = first;
 	s->bottom = first;
 }
-void	ra(t_stack *a)
+void	ra(t_stack *a, t_stack *b, t_bench *bench)
 {
 	if (!a || !a->top || !a->top->next)
 		return ;
 	rotate(a);
 	write(1, "ra\n", 3);
+	print_stacks("ra", a, b);
+	if (bench)
+		bench -> ra++;
 }
 
-void	rb(t_stack *b)
+void	rb(t_stack *b, t_stack *a, t_bench *bench)
 {
 	if (!b || !b->top || !b->top->next)
 		return ;
 	rotate(b);
 	write(1, "rb\n", 3);
+	print_stacks("rb", a, b);
+	if (bench)
+		bench -> rb++;
 }
 
-void	rr(t_stack *a, t_stack *b)
+void	rr(t_stack *a, t_stack *b, t_bench *bench)
 {
 	int	rotated_a;
 	int	rotated_b;
@@ -94,9 +100,22 @@ void	rr(t_stack *a, t_stack *b)
 		rotated_b = 1;
 	}
 	if (rotated_a && rotated_b)
+	{
 		write(1, "rr\n", 3);
+		print_stacks("rr", a, b);
+		if (bench)
+			bench -> rr++;
+	}
 	else if (rotated_a)
+	{
 		write(1, "ra\n", 3);
+		if (bench)
+			bench -> ra++;
+	}
 	else if (rotated_b)
+	{
 		write(1, "rb\n", 3);
+		if (bench)
+			bench -> rb++;
+	}
 }
