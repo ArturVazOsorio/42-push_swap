@@ -6,7 +6,7 @@
 /*   By: aantela- <aantela-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/05 15:11:45 by pgois-wa          #+#    #+#             */
-/*   Updated: 2026/06/21 18:56:00 by aantela-         ###   ########.fr       */
+/*   Updated: 2026/06/21 20:55:31 by aantela-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 typedef struct s_node
 {
 	int				value;
+	int				index;
 	struct s_node	*next;
 	struct s_node	*previous;
 }					t_node;
@@ -34,11 +35,11 @@ typedef struct s_stack
 
 typedef enum e_strategy
 {
+	STRAT_NONE,
 	STRAT_ADAPTIVE,
 	STRAT_SIMPLE,
 	STRAT_MEDIUM,
-	STRAT_COMPLEX,
-	STRAT_NONE
+	STRAT_COMPLEX
 }	t_strategy;
 
 typedef struct	s_bench

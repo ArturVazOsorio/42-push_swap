@@ -6,7 +6,7 @@
 /*   By: aantela- <aantela-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/19 04:48:56 by aantela-          #+#    #+#             */
-/*   Updated: 2026/06/21 20:00:01 by aantela-         ###   ########.fr       */
+/*   Updated: 2026/06/21 21:10:49 by aantela-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,11 +50,6 @@ int	main(int argc, char **argv)
 		}
 		free_array(split_args);
 		prog.start_index++;
-	}
-	if (is_sorted(&prog.a))
-	{
-		free_stack(&prog.a);
-		return (0);
 	}
 	prog.disorder = compute_disorder(&prog.a);
 	if (prog.strategy == STRAT_SIMPLE || prog.strategy == STRAT_ADAPTIVE)
