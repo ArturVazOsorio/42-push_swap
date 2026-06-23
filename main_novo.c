@@ -6,11 +6,20 @@
 /*   By: aantela- <aantela-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/19 04:48:56 by aantela-          #+#    #+#             */
-/*   Updated: 2026/06/21 21:10:49 by aantela-         ###   ########.fr       */
+/*   Updated: 2026/06/23 06:22:15 by aantela-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+static void	cleanup_and_error(t_program *prog, char **split_args)
+{
+	free_array(split_args);
+	free_stack(&prog->a);
+	free_stack(&prog->b);
+	write(2, "Error\n", 6);
+	exit(1);
+}
 
 int	main(int argc, char **argv)
 {
@@ -21,7 +30,7 @@ int	main(int argc, char **argv)
 
 	if (argc < 2)
 		return (0);
-	prog = (t_program) {0}; // Inicializa tudo a zero/NULL
+	prog = (t_program){0};
 	parse_flags(argc, argv, &prog);
 	if (prog.start_index > prog.end_index)
 		return (0);
@@ -29,33 +38,31 @@ int	main(int argc, char **argv)
 	{
 		split_args = ft_split(argv[prog.start_index]);
 		if (!split_args || !split_args[0])
-		{
-			free_array(split_args);
-			handle_error_and_exit(&prog.a);
-			handle_error_and_exit(&prog.b);
-		}
+			cleanup_and_error(&prog, split_args);
 		j = 0;
 		while (split_args[j])
 		{
-			if (!is_numeric(split_args[j]) || 
-				ft_atoi_safe(split_args[j], &value) == 0 || 
-				has_duplicate(&prog.a, value))
-			{
-				free_array(split_args);
-				handle_error_and_exit(&prog.a);
-				handle_error_and_exit(&prog.b);
-			}
-			add_bottom(&prog.a, value);
+			if (!is_numeric(split_args[j])
+				|| ft_atoi_safe(split_args[j], &value) == 0
+				|| has_duplicate(&prog.a, value))
+				cleanup_and_error(&prog, split_args);
+			create_and_add_bottom(&prog.a, value);
 			j++;
 		}
 		free_array(split_args);
 		prog.start_index++;
 	}
 	prog.disorder = compute_disorder(&prog.a);
+	if (is_sorted(&prog.a))
+	{
+		free_stack(&prog.a);
+		free_stack(&prog.b);
+		return (0);
+	}
 	if (prog.strategy == STRAT_SIMPLE || prog.strategy == STRAT_ADAPTIVE)
-		sort_simple(&prog.a, &prog.b, &prog.bench);
+		sort_simple(&prog);//bom para desordem 0-10 || 90-100 n = 100 
 	if (prog.bench_mode)
-		print_bench(&prog.bench, &prog, prog.disorder);// usando &prog.a, &prog.b, &prog.bench
+		print_bench(&prog, prog.disorder);
 	free_stack(&prog.a);
 	free_stack(&prog.b);
 	return (0);

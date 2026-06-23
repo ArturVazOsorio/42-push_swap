@@ -6,7 +6,7 @@
 /*   By: aantela- <aantela-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 13:59:48 by aantela-          #+#    #+#             */
-/*   Updated: 2026/06/21 19:45:05 by aantela-         ###   ########.fr       */
+/*   Updated: 2026/06/23 03:52:25 by aantela-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,13 +65,13 @@ int	is_numeric(char *str)
 	return (1);
 }
 
-int	has_duplicate(t_stack *stack, int value)
+int	has_duplicate(t_list *stack, int value)
 {
 	t_node *current;
 
-	if (!stack || !stack -> top)
+	if (!stack || !stack -> head)
 		return (0);
-	current = stack -> top;
+	current = stack -> head;
 	while (current)
 	{
 		if (current -> value == value)
@@ -81,13 +81,13 @@ int	has_duplicate(t_stack *stack, int value)
 	return (0);
 }
 
-int	is_sorted(t_stack *stack)
+int	is_sorted(t_list *stack)
 {
 	t_node	*current;
 
-	if (!stack || !stack -> top || stack -> size < 2)
+	if (!stack || !stack -> head || stack -> size < 2)
 		return (1);
-	current = stack -> top;
+	current = stack -> head;
 	while (current -> next != NULL)
 	{
 		if (current -> value > current -> next -> value)

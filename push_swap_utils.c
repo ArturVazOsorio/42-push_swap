@@ -6,13 +6,13 @@
 /*   By: aantela- <aantela-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/05 15:08:38 by pgois-wa          #+#    #+#             */
-/*   Updated: 2026/06/12 04:56:58 by aantela-         ###   ########.fr       */
+/*   Updated: 2026/06/23 05:41:05 by aantela-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_node	*node_builder(int value)
+/*t_node	*node_builder(int value)
 {
 	t_node *node;
 
@@ -23,31 +23,35 @@ t_node	*node_builder(int value)
 	node->previous = NULL;
     node->value = value;
 	return (node);
-}
-void	add_bottom(t_stack *stack, int value)
+}*/
+void	create_and_add_bottom(t_list *stack, int value)
 {
+	if (!stack)
+		return ;
 	t_node	*new_node;
 	new_node = malloc(sizeof(t_node));
 	if (!new_node)
 		return ;
 	new_node -> value = value;
 	new_node -> next = NULL;
-	if (stack -> size == 0)
+	new_node -> index = 0;
+	if (stack -> size == 0 || !stack -> head)
 	{
 		new_node -> previous = NULL;
-		stack -> top = new_node;
-		stack -> bottom = new_node;
+		stack -> head = new_node;
+		stack -> tail = new_node;
+		stack -> size = 1;
 	}
 	else
 	{
-		new_node -> previous = stack -> bottom;
-		stack -> bottom -> next = new_node;
-		stack -> bottom = new_node;
+		new_node -> previous = stack -> tail;
+		stack -> tail -> next = new_node;
+		stack -> tail = new_node;
+		stack -> size++;
 	}
-	stack -> size++;
 }
 
-void	init_stack_a(t_stack *stack_a, int argc, char **argv, int start_index)
+/*void	init_stack_a(t_stack *stack_a, int argc, char **argv, int start_index)
 {
 	int	value;
 	stack_a -> top = NULL;
@@ -64,4 +68,4 @@ void	init_stack_a(t_stack *stack_a, int argc, char **argv, int start_index)
 		add_bottom(stack_a, value);
 		start_index++;
 	}
-}
+}*/

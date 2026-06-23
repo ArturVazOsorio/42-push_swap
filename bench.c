@@ -6,7 +6,7 @@
 /*   By: aantela- <aantela-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/17 00:00:00 by aantela-          #+#    #+#             */
-/*   Updated: 2026/06/21 19:57:32 by aantela-         ###   ########.fr       */
+/*   Updated: 2026/06/23 05:45:10 by aantela-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ static void	bench_putpercent(double value)
 ** Conta inversoes (pares i,j onde i<j mas a[i]>a[j])
 ** e devolve a percentagem sobre o total de pares possivel.
 */
-double	compute_disorder(t_stack *a)
+double	compute_disorder(t_list *a)
 {
 	t_node	*i;
 	t_node	*j;
@@ -89,7 +89,7 @@ double	compute_disorder(t_stack *a)
 		return (0.0);
 	mistakes = 0;
 	total_pairs = 0;
-	i = a->top;
+	i = a->head;
 	while (i)
 	{
 		j = i->next;
@@ -134,7 +134,7 @@ const char	*strategy_name(t_strategy strategy)
 ** Imprime o relatorio de benchmark para stderr.
 ** Chamada no main apos o sort, so se config.bench_mode == 1.
 */
-void	print_bench(t_bench *bench, t_program *prog, double disorder)
+void	print_bench(t_program *prog, double disorder)
 {
 	bench_putstr("[bench] Disorder:    ");
 	bench_putpercent(disorder);
@@ -143,32 +143,32 @@ void	print_bench(t_bench *bench, t_program *prog, double disorder)
 	bench_putstr(strategy_name(prog->strategy));
 	write(2, "\n", 1);
 	bench_putstr("[bench] Operations:  ");
-	bench_putint(total_ops(bench));
+	bench_putint(total_ops(&prog->bench));
 	write(2, "\n", 1);
 	bench_putstr("[bench]   sa: ");
-	bench_putint(bench->sa);
+	bench_putint(prog->bench.sa);
 	bench_putstr("   sb: ");
-	bench_putint(bench->sb);
+	bench_putint(prog->bench.sb);
 	bench_putstr("   ss: ");
-	bench_putint(bench->ss);
+	bench_putint(prog->bench.ss);
 	write(2, "\n", 1);
 	bench_putstr("[bench]   pa: ");
-	bench_putint(bench->pa);
+	bench_putint(prog->bench.pa);
 	bench_putstr("   pb: ");
-	bench_putint(bench->pb);
+	bench_putint(prog->bench.pb);
 	write(2, "\n", 1);
 	bench_putstr("[bench]   ra: ");
-	bench_putint(bench->ra);
+	bench_putint(prog->bench.ra);
 	bench_putstr("   rb: ");
-	bench_putint(bench->rb);
+	bench_putint(prog->bench.rb);
 	bench_putstr("   rr: ");
-	bench_putint(bench->rr);
+	bench_putint(prog->bench.rr);
 	write(2, "\n", 1);
 	bench_putstr("[bench]   rra: ");
-	bench_putint(bench->rra);
+	bench_putint(prog->bench.rra);
 	bench_putstr("  rrb: ");
-	bench_putint(bench->rrb);
+	bench_putint(prog->bench.rrb);
 	bench_putstr("  rrr: ");
-	bench_putint(bench->rrr);
+	bench_putint(prog->bench.rrr);
 	write(2, "\n", 1);
 }
