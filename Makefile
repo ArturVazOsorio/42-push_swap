@@ -6,7 +6,7 @@
 #    By: aantela- <aantela-@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/06/14 14:51:25 by aantela-          #+#    #+#              #
-#    Updated: 2026/06/21 19:48:42 by aantela-         ###   ########.fr        #
+#    Updated: 2026/06/24 21:58:26 by aantela-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,14 +22,17 @@ SRCS	= main_novo.c \
 		  parse_args.c \
 		  parse_args_utils.c \
 		  push_swap_utils.c \
+		  push_swap_utils_medium.c \
 		  bench.c \
+		  bench_utils.c \
 		  utils.c \
 		  utils_1.c	\
 		  push.c \
 		  swap.c \
 		  rotate.c \
 		  reverse_rotate.c \
-		  simple_sort.c
+		  simple_sort.c \
+		  medium_sort.c
 
 OBJS	= $(SRCS:.c=.o)
 

@@ -6,7 +6,7 @@
 /*   By: aantela- <aantela-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/19 04:48:56 by aantela-          #+#    #+#             */
-/*   Updated: 2026/06/23 06:22:15 by aantela-         ###   ########.fr       */
+/*   Updated: 2026/06/24 21:54:13 by aantela-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,11 @@ int	main(int argc, char **argv)
 		free_stack(&prog.b);
 		return (0);
 	}
-	if (prog.strategy == STRAT_SIMPLE || prog.strategy == STRAT_ADAPTIVE)
+	if (prog.strategy == STRAT_SIMPLE)
 		sort_simple(&prog);//bom para desordem 0-10 || 90-100 n = 100 
-	if (prog.bench_mode)
+	if (prog.strategy == STRAT_MEDIUM)
+		sort_medium(&prog);
+if (prog.bench_mode)
 		print_bench(&prog, prog.disorder);
 	free_stack(&prog.a);
 	free_stack(&prog.b);

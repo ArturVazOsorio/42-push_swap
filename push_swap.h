@@ -6,7 +6,7 @@
 /*   By: aantela- <aantela-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/05 15:11:45 by pgois-wa          #+#    #+#             */
-/*   Updated: 2026/06/23 05:35:10 by aantela-         ###   ########.fr       */
+/*   Updated: 2026/06/24 21:55:19 by aantela-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,9 @@ void	create_and_add_bottom(t_list *stack, int value);
 int	ft_strcmp(const char *s1, const char *s2);
 char	**ft_split(char const *s);
 void	free_array(char **array);
-
+void	rotate_to_top(t_program *prog, t_node *target);
+int	*array_filler(t_list *stack);
+int	ft_sqrt(int nb);
 // operadores
 // adicionado a sa e sb stack temporarias para debug.
 void	sa(t_program *prog);
@@ -114,6 +116,13 @@ void	pb(t_program *prog);
 // simple sort teste
 void	sort_three(t_program *prog);
 void	sort_simple(t_program *prog);
+// medium teste
+void	sort_medium(t_program *prog);
+//medium utils
+void	index_assigner(t_list *stack, int *values);
+void	indexer(t_list *stack);
+int		chunk_count(int size);
+
 /* complex teste
 int	get_pos(t_stack *s, t_node *target);
 int	signed_cost(int pos, int size);
@@ -129,5 +138,6 @@ void	rotate_a_to_pos(t_stack *a, t_stack *b, t_bench *bench, int pos);
 void	move_cheapest(t_stack *a, t_stack *b, t_bench *bench);*/
 // BENCH
 double	compute_disorder(t_list *a);
+int	*copy_stack_to_array(t_list *a);
 void	print_bench(t_program *prog, double disorder);
 #endif

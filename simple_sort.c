@@ -6,7 +6,7 @@
 /*   By: aantela- <aantela-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/14 14:50:12 by aantela-          #+#    #+#             */
-/*   Updated: 2026/06/23 06:00:00 by aantela-         ###   ########.fr       */
+/*   Updated: 2026/06/24 21:51:07 by aantela-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static int	get_min_index(t_list *a)
 	return (min_index);
 }
 
-static void	rotate_to_top(t_program *prog, int min_index)
+static void	otate_to_top(t_program *prog, int min_index)
 {
 	int	distance;
 
@@ -92,7 +92,7 @@ void	sort_simple(t_program *prog)
 		return ;
 	while (prog->a.size > 3)
 	{
-		rotate_to_top(prog, get_min_index(&prog->a));
+		otate_to_top(prog, get_min_index(&prog->a));
 		if (is_sorted(&prog->a))
 			break ;
 		pb(prog);

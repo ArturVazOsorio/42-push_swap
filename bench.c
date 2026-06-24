@@ -6,7 +6,7 @@
 /*   By: aantela- <aantela-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/17 00:00:00 by aantela-          #+#    #+#             */
-/*   Updated: 2026/06/23 05:45:10 by aantela-         ###   ########.fr       */
+/*   Updated: 2026/06/24 21:18:20 by aantela-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,9 +62,16 @@ static void	bench_putpercent(double value)
 {
 	int	integer;
 	int	decimal;
+	double scaled_value;
 
-	integer = (int)value;
-	decimal = (int)((value - integer) * 100.0);
+	scaled_value = value *100.0;
+	integer = (int)scaled_value;
+	decimal = (int)((scaled_value - integer) * 100.0 + 0.05);
+	if (decimal >= 100)
+	{
+		integer += 1;
+		decimal = 0;
+	}
 	bench_putint(integer);
 	write(2, ".", 1);
 	if (decimal < 10)
@@ -78,7 +85,7 @@ static void	bench_putpercent(double value)
 ** Conta inversoes (pares i,j onde i<j mas a[i]>a[j])
 ** e devolve a percentagem sobre o total de pares possivel.
 */
-double	compute_disorder(t_list *a)
+/*double	compute_disorder(t_list *a)
 {
 	t_node	*i;
 	t_node	*j;
@@ -103,7 +110,7 @@ double	compute_disorder(t_list *a)
 		i = i->next;
 	}
 	return (mistakes / total_pairs * 100.0);
-}
+}*/
 
 /*
 ** Calcula o total de operacoes a partir do t_bench.

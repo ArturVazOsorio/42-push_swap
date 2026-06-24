@@ -6,7 +6,7 @@
 /*   By: aantela- <aantela-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/05 15:08:38 by pgois-wa          #+#    #+#             */
-/*   Updated: 2026/06/23 05:41:05 by aantela-         ###   ########.fr       */
+/*   Updated: 2026/06/24 21:49:36 by aantela-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,3 +69,54 @@ void	create_and_add_bottom(t_list *stack, int value)
 		start_index++;
 	}
 }*/
+
+void	rotate_to_top(t_program *prog , t_node *target)
+{
+	int		distance;
+	int		position;
+	t_node	*tmp;
+
+	tmp = prog ->a.head;
+	position = 0;
+	while (tmp != target)
+	{
+		position++;
+		tmp = tmp->next;
+	}
+	if (position <= prog -> a.size / 2)
+		distance = position;
+	else
+		distance = position - prog -> a.size;
+	while (distance > 0)
+	{
+		ra(prog);
+		distance--;
+	}
+	while (distance < 0)
+	{
+		rra(prog);
+		distance++;
+	}
+}
+
+int	*array_filler(t_list *stack)
+{
+	int		*values;
+	int		size;
+	int		i;
+	t_node	*tmp;
+
+	i = 0;
+	size = stack->size;
+	tmp = stack->head;
+	values = malloc(size * sizeof(int));
+	if (!values)
+		return (NULL);
+	while (i < size)
+	{
+		values[i] = tmp->value;
+		tmp = tmp->next;
+		i++;
+	}
+	return (values);
+}
