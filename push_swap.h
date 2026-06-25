@@ -6,7 +6,7 @@
 /*   By: aantela- <aantela-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/05 15:11:45 by pgois-wa          #+#    #+#             */
-/*   Updated: 2026/06/24 21:55:19 by aantela-         ###   ########.fr       */
+/*   Updated: 2026/06/25 15:26:44 by aantela-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ void	create_and_add_bottom(t_list *stack, int value);
 int	ft_strcmp(const char *s1, const char *s2);
 char	**ft_split(char const *s);
 void	free_array(char **array);
-void	rotate_to_top(t_program *prog, t_node *target);
+void	rotate_to_top(t_list *stack, t_node *target, t_program *prog);
 int	*array_filler(t_list *stack);
 int	ft_sqrt(int nb);
 // operadores

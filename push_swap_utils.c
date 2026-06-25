@@ -6,7 +6,7 @@
 /*   By: aantela- <aantela-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/05 15:08:38 by pgois-wa          #+#    #+#             */
-/*   Updated: 2026/06/24 21:49:36 by aantela-         ###   ########.fr       */
+/*   Updated: 2026/06/25 15:26:01 by aantela-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,23 +70,23 @@ void	create_and_add_bottom(t_list *stack, int value)
 	}
 }*/
 
-void	rotate_to_top(t_program *prog , t_node *target)
+void	rotate_to_top(t_list *stack , t_node *target, t_program *prog)
 {
 	int		distance;
 	int		position;
 	t_node	*tmp;
 
-	tmp = prog ->a.head;
+	tmp = stack -> head;
 	position = 0;
 	while (tmp != target)
 	{
 		position++;
 		tmp = tmp->next;
 	}
-	if (position <= prog -> a.size / 2)
+	if (position <= stack -> size / 2)
 		distance = position;
 	else
-		distance = position - prog -> a.size;
+		distance = position - stack -> size;
 	while (distance > 0)
 	{
 		ra(prog);

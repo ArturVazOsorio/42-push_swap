@@ -6,7 +6,7 @@
 #    By: aantela- <aantela-@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/06/14 14:51:25 by aantela-          #+#    #+#              #
-#    Updated: 2026/06/24 21:58:26 by aantela-         ###   ########.fr        #
+#    Updated: 2026/06/25 15:53:17 by aantela-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,7 @@ SRCS	= main_novo.c \
 		  rotate.c \
 		  reverse_rotate.c \
 		  simple_sort.c \
-		  medium_sort.c
+		  medium_sort_teste.c
 
 OBJS	= $(SRCS:.c=.o)
 
