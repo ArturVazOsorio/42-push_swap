@@ -6,7 +6,7 @@
 /*   By: pgois-wa <pgois-wa@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/07 19:08:39 by pgois-wa          #+#    #+#             */
-/*   Updated: 2026/06/23 06:00:00 by aantela-         ###   ########.fr       */
+/*   Updated: 2026/06/29 15:32:17 by aantela-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	rra(t_program *prog)
 		return ;
 	reverse_rotate(&prog->a);
 	write(1, "rra\n", 4);
-	print_stacks("rra", prog);
+	//print_stacks("rra", prog);
 	if (prog->bench_mode)
 		prog->bench.rra++;
 }
@@ -44,7 +44,7 @@ void	rrb(t_program *prog)
 		return ;
 	reverse_rotate(&prog->b);
 	write(1, "rrb\n", 4);
-	print_stacks("rrb", prog);
+	//print_stacks("rrb", prog);
 	if (prog->bench_mode)
 		prog->bench.rrb++;
 }
@@ -57,7 +57,7 @@ void	rrr(t_program *prog)
 	reverse_rotate(&prog->a);
 	reverse_rotate(&prog->b);
 	write(1, "rrr\n", 4);
-	print_stacks("rrr", prog);
+	//print_stacks("rrr", prog);
 	if (prog->bench_mode)
 		prog->bench.rrr++;
 }

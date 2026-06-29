@@ -6,7 +6,7 @@
 /*   By: pgois-wa <pgois-wa@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/03 16:15:36 by pgois-wa          #+#    #+#             */
-/*   Updated: 2026/06/23 06:00:00 by aantela-         ###   ########.fr       */
+/*   Updated: 2026/06/29 15:31:22 by aantela-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	sa(t_program *prog)
 		return ;
 	swap(&prog->a);
 	write(1, "sa\n", 3);
-	print_stacks("sa", prog);
+	//print_stacks("sa", prog);
 	if (prog->bench_mode)
 		prog->bench.sa++;
 }
@@ -49,7 +49,7 @@ void	sb(t_program *prog)
 		return ;
 	swap(&prog->b);
 	write(1, "sb\n", 3);
-	print_stacks("sb", prog);
+	//print_stacks("sb", prog);
 	if (prog->bench_mode)
 		prog->bench.sb++;
 }
@@ -62,7 +62,7 @@ void	ss(t_program *prog)
 	swap(&prog->a);
 	swap(&prog->b);
 	write(1, "ss\n", 3);
-	print_stacks("ss", prog);
+	//print_stacks("ss", prog);
 	if (prog->bench_mode)
 		prog->bench.ss++;
 }

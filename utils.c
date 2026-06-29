@@ -6,23 +6,11 @@
 /*   By: aantela- <aantela-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/12 03:33:19 by aantela-          #+#    #+#             */
-/*   Updated: 2026/06/13 06:07:14 by aantela-         ###   ########.fr       */
+/*   Updated: 2026/06/29 15:14:10 by aantela-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-int	ft_strcmp(const char *s1, const char *s2)
-{
-	size_t	i;
-
-	i = 0;
-	while (s1[i] && s2[i] && s1[i] == s2[i])
-	{
-		i++;
-	}
-	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
-}
 
 static int	count_words(const char *str)
 {
@@ -45,7 +33,7 @@ static int	count_words(const char *str)
 	return (count);
 }
 
-static char	*extract_word(const char *str, int start, int finish)
+static char	*extract_word(const char *str, size_t start, size_t finish)
 {
 	char	*word;
 	int		i;
@@ -75,7 +63,7 @@ void	free_array(char **array)
 	free(array);
 }
 
-char	**ft_split(char const *s)
+/*char	**ft_split(char const *s)
 {
 	char	**array;
 	size_t	i;
@@ -108,4 +96,32 @@ char	**ft_split(char const *s)
 		array[j++] = extract_word(s, s_word, i);
 	array[j] = NULL;
 	return (array);
+}*/
+char	**ft_split(char const *s)
+{
+	char	**array;
+	size_t	i;
+	size_t	j;
+	size_t	start;
+
+	if (!s)
+		return (NULL);
+	array = malloc(sizeof(char *) * (count_words(s) + 1));
+	if (!array)
+		return (NULL);
+	i = 0;
+	j = 0;
+	while (s[i])
+	{
+		while (s[i] == ' ')
+			i++;
+		if (s[i])
+		{
+			start = i;
+			while (s[i] && s[i] != ' ')
+				i++;
+			array[j++] = extract_word(s, start, i);
+		}
+	}
+	return (array[j] = NULL, array);
 }

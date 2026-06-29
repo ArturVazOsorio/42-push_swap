@@ -6,7 +6,7 @@
 /*   By: aantela- <aantela-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/19 04:48:56 by aantela-          #+#    #+#             */
-/*   Updated: 2026/06/27 15:22:52 by aantela-         ###   ########.fr       */
+/*   Updated: 2026/06/29 15:22:31 by aantela-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ static void	resolve_and_sort(t_program *prog)
 			sort_simple(prog);
 			prog->adaptive = STRAT_SIMPLE;
 		}
-		else if (prog -> disorder >0.2 && prog->disorder < 0.5)
+		else if (prog -> disorder > 0.2 && prog->disorder < 0.5)
 		{
 			sort_medium(prog);
 			prog->adaptive = STRAT_MEDIUM;
