@@ -6,7 +6,7 @@
 #    By: aantela- <aantela-@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/06/14 14:51:25 by aantela-          #+#    #+#              #
-#    Updated: 2026/07/03 04:06:29 by aantela-         ###   ########.fr        #
+#    Updated: 2026/07/04 04:56:15 by aantela-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,6 @@ PRINTF_DIR = ./ft_printf
 PRINTF_LIB = $(PRINTF_DIR)/libftprintf.a
 
 SRCS	= main_novo.c \
-		  debug.c \
 		  erro_handler.c \
 		  parse_args.c \
 		  parse_args_utils.c \
@@ -38,7 +37,6 @@ SRCS	= main_novo.c \
 		  sort_five_utils.c \
 		  mmedium_sort.c \
 		  complex_sort.c \
-		  complex_sort_utils.c \
 		  complex_sort_utils_1.c \
 		  complex_sort_utils_2.c \
 		  complex_sort_utils_3.c \

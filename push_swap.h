@@ -6,7 +6,7 @@
 /*   By: aantela- <aantela-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/05 15:11:45 by pgois-wa          #+#    #+#             */
-/*   Updated: 2026/07/03 04:31:15 by aantela-         ###   ########.fr       */
+/*   Updated: 2026/07/04 04:47:41 by aantela-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,9 +84,9 @@ typedef struct s_program
 
 typedef struct s_range
 {
-    int	l;
-    int	m;
-    int	r;
+	int	l;
+	int	m;
+	int	r;
 }		t_range;
 
 // DEGUG TOOLS
@@ -128,12 +128,12 @@ void	insert_back(t_program *prog);
 // simple sort teste
 void	sort_three(t_program *prog);
 void	sort_simple(t_program *prog);
-int find_max_pos(t_list *b);
-int find_target_b(t_list *b, int value_a);
+int		find_max_pos(t_list *b);
+int		find_target_b(t_list *b, int value_a);
 // medium teste
 void	sort_medium(t_program *prog);
 int		chunk_count(int size);
-int	cost_calculator(int position, int stack_size);
+int		cost_calculator(int position, int stack_size);
 //medium utils
 void	index_assigner(t_list *stack, int *values);
 t_node	*best_selector_a(t_list *stack, int chunk_max, int chunk_min);

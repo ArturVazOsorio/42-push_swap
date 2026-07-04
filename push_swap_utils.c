@@ -6,7 +6,7 @@
 /*   By: aantela- <aantela-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/05 15:08:38 by pgois-wa          #+#    #+#             */
-/*   Updated: 2026/06/29 16:11:26 by aantela-         ###   ########.fr       */
+/*   Updated: 2026/07/04 04:42:15 by aantela-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,10 @@
 
 void	create_and_add_bottom(t_list *stack, int value)
 {
+	t_node	*new_node;
+
 	if (!stack)
 		return ;
-	t_node	*new_node;
 	new_node = malloc(sizeof(t_node));
 	if (!new_node)
 		return ;
@@ -39,7 +40,7 @@ void	create_and_add_bottom(t_list *stack, int value)
 	}
 }
 
-void	rotate_to_top(t_list *stack , t_node *target, t_program *prog)
+void	rotate_to_top(t_list *stack, t_node *target, t_program *prog)
 {
 	int		distance;
 	int		position;
@@ -90,45 +91,45 @@ int	*array_filler(t_list *stack)
 	return (values);
 }
 
-int find_max_pos(t_list *b)
+int	find_max_pos(t_list *b)
 {
-    t_node  *curr;
-    int     max_val;
-    int     max_pos;
-    int     curr_pos;
+	t_node	*curr;
+	int		max_val;
+	int		max_pos;
+	int		curr_pos;
 
-    curr = b->head;
-    max_val = curr->value;
-    max_pos = 0;
-    curr_pos = 0;
-    while (curr)
-    {
-        if (curr->value > max_val)
-        {
-            max_val = curr->value;
-            max_pos = curr_pos;
-        }
-        curr_pos++;
-        curr = curr->next;
-    }
-    return (max_pos);
+	curr = b->head;
+	max_val = curr->value;
+	max_pos = 0;
+	curr_pos = 0;
+	while (curr)
+	{
+		if (curr->value > max_val)
+		{
+			max_val = curr->value;
+			max_pos = curr_pos;
+		}
+		curr_pos++;
+		curr = curr->next;
+	}
+	return (max_pos);
 }
 
-int find_target_b(t_list *b, int value_a)
+int	find_target_b(t_list *b, int value_a)
 {
-    t_node  *curr;
-    int     pos;
+	t_node	*curr;
+	int		pos;
 
-    curr = b->head;
-    pos = 1;
-    while (curr->next)
-    {
-        if (curr->value > value_a && curr->next->value < value_a)
-            return (pos);
-        pos++;
-        curr = curr->next;
-    }
-    if (curr->value > value_a && b->head->value < value_a)
-        return (0);
-    return (find_max_pos(b));
+	curr = b->head;
+	pos = 1;
+	while (curr->next)
+	{
+		if (curr->value > value_a && curr->next->value < value_a)
+			return (pos);
+		pos++;
+		curr = curr->next;
+	}
+	if (curr->value > value_a && b->head->value < value_a)
+		return (0);
+	return (find_max_pos(b));
 }

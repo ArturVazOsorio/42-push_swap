@@ -6,13 +6,13 @@
 /*   By: aantela- <aantela-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/27 00:00:00 by aantela-          #+#    #+#             */
-/*   Updated: 2026/06/27 00:00:00 by aantela-         ###   ########.fr       */
+/*   Updated: 2026/07/04 04:55:39 by aantela-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	log2_ceil(int n)
+/*static int	log2_ceil(int n)
 {
 	int	result;
 	int	power;
@@ -27,11 +27,11 @@ static int	log2_ceil(int n)
 	return (result);
 }
 
-/*
+*
 ** Push A→B em chunks de tamanho log2(n).
 ** Dentro de cada chunk escolhe sempre o de menor custo em A.
 ** Resultado: B tem ceil(n/log2(n)) grupos — O(n/log n) grupos.
-*/
+*
 static void	push_log_chunks(t_program *prog, int size)
 {
 	int		chunk_size;
@@ -57,12 +57,12 @@ static void	push_log_chunks(t_program *prog, int size)
 	}
 }
 
-/*
+*
 ** Dentro de cada chunk de B (tamanho log2(n)), os elementos têm
 ** índices contíguos. O drain pega sempre o máximo do chunk do topo
 ** usando rotate local em B — no máximo log2(n) rotações por elemento.
 ** Isso torna o drain O(n * log n) em vez de O(n²).
-*/
+*
 static t_node	*max_in_range(t_list *b, int idx_min, int idx_max)
 {
 	t_node	*tmp;
@@ -144,4 +144,4 @@ void	sort_complex(t_program *prog)
 		idx_max -= chunk_size;
 	}
 	finalize_a(prog);
-}
+}*/

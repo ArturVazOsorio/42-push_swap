@@ -6,7 +6,7 @@
 /*   By: aantela- <aantela-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 15:08:31 by aantela-          #+#    #+#             */
-/*   Updated: 2026/06/27 14:55:24 by aantela-         ###   ########.fr       */
+/*   Updated: 2026/07/04 04:43:19 by aantela-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	free_stack(t_list *stack)
 {
-	t_node *current;
-	t_node *next_node;
+	t_node	*current;
+	t_node	*next_node;
 
 	if (!stack || !stack -> head)
 		return ;
