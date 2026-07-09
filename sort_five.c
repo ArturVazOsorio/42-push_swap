@@ -6,17 +6,9 @@
 /*   By: aantela- <aantela-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/03 04:17:23 by aantela-          #+#    #+#             */
-/*   Updated: 2026/07/03 04:17:44 by aantela-         ###   ########.fr       */
+/*   Updated: 2026/07/09 16:07:04 by aantela-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-/* sort_five.c
-** Estratégia:
-**   1. Empurra os 2 menores de A para B (com rotação mínima antes do pb)
-**   2. Ordena os 3 restantes em A com sort_three()
-**   3. Reinsere os 2 elementos de B em A, na posição correta,
-**      usando rotação mínima (insert_back em sort_five_utils.c)
-*/
 
 #include "push_swap.h"
 
