@@ -47,6 +47,7 @@ The `Makefile` compiles with `-Wall -Wextra -Werror` and internally depends on `
 
 ```bash
 ./push_swap [flags] arg1 arg2 arg3 ...
+./push_swap arg1 arg2 arg3 ... [flags] 
 ```
 
 Arguments can be passed either as several space-separated arguments or as a single string of space-separated numbers (both formats are supported, thanks to parsing with `ft_split`):

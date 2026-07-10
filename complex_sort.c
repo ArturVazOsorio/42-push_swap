@@ -6,7 +6,7 @@
 /*   By: aantela- <aantela-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/27 05:39:42 by aantela-          #+#    #+#             */
-/*   Updated: 2026/07/08 14:57:36 by aantela-         ###   ########.fr       */
+/*   Updated: 2026/07/10 03:15:37 by aantela-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,11 @@ static void	push_all_to_b(t_program *prog)
 
 void	complex_sort(t_program *prog)
 {
+	if (prog->a.size < 6)
+	{
+		sort_five(prog);
+		return ;
+	}
 	push_all_to_b(prog);
 	sort_three(prog);
 	while (prog->b.size > 0)
