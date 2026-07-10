@@ -6,7 +6,7 @@
 /*   By: aantela- <aantela-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/13 15:35:34 by pgois-wa          #+#    #+#             */
-/*   Updated: 2026/07/08 16:54:06 by aantela-         ###   ########.fr       */
+/*   Updated: 2026/07/10 03:15:45 by aantela-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,11 @@ void	medium_sort(t_program *prog)
 {
 	t_node	*best;
 
+	if (prog->a.size < 6)
+	{
+		sort_five(prog);
+		return ;
+	}
 	indexer(&prog->a);
 	push_chunks_b(prog);
 	while (prog->b.head)
